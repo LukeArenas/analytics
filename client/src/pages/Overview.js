@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import AtAGlance from '../components/AtAGlance'
 import '../styles/Overview.css'
 
 const Overview = (props) => {
@@ -29,7 +30,6 @@ const Overview = (props) => {
   //handle clicked card to redirect to that product's detail page
   const handleClick = (index, product) => {
     props.setSelectedProduct(props.products[index])
-    console.log(props.products[index][0].product)
     history.push(`/${product}`)
   }
 
@@ -40,6 +40,8 @@ const Overview = (props) => {
   return (
     <div className="overview-page flex">
       <h2 className="title">Campaign Overview</h2>
+      {productStats.length ? <AtAGlance productStats={productStats} /> : null}
+
       <div className="content">
         {productStats.length ? (
           <div className="flex card-container">
