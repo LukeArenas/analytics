@@ -30,6 +30,19 @@ const Overview = (props) => {
   return (
     <div>
       <h2>Campaign Overview</h2>
+      {productStats.length ? (
+        <div>
+          {productStats.map((product) => (
+            <div key={product.product}>
+              <h3>{product.product}</h3>
+              <label>Total Impressions:</label>
+              <h3>{product.totalImpressions}</h3>
+              <label>Total Clicks:</label>
+              <h3>{product.totalClicks}</h3>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   )
 }
