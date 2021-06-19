@@ -27,6 +27,7 @@ const App = () => {
         productArray.push(singleProductArray)
         i = nextChar(i)
       }
+      //set state with productArray
       setProducts(productArray)
     } catch (error) {
       throw error
@@ -42,7 +43,11 @@ const App = () => {
       <header>Header</header>
       <main>
         <Switch>
-          <Route exact path="/" component={Overview} />
+          <Route
+            exact
+            path="/"
+            component={() => <Overview products={products} />}
+          />
           <Route path="/:product" component={ProductDetail} />
         </Switch>
       </main>
