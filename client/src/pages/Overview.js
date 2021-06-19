@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import '../styles/Overview.css'
 
 const Overview = (props) => {
   const [productStats, setProductStats] = useState([])
+  const history = useHistory()
 
   //function to reduce the nested data into total impressions and total clicks by product
   const reduceData = () => {
@@ -24,6 +26,13 @@ const Overview = (props) => {
     setProductStats(productStatsArray)
   }
 
+  //handle clicked card to redirect to that product's detail page
+  const handleClick = (index, product) => {
+    props.setSelectedProduct(props.products[index])
+    console.log(props.products[index][0].product)
+    history.push(`/${product}`)
+  }
+
   useEffect(() => {
     reduceData()
   }, [])
@@ -34,8 +43,12 @@ const Overview = (props) => {
       <div className="content">
         {productStats.length ? (
           <div className="flex card-container">
-            {productStats.map((product) => (
-              <div key={product.product} className="ad-card">
+            {productStats.map((product, index) => (
+              <div
+                key={product.product}
+                className="ad-card"
+                onClick={() => handleClick(index, product.product)}
+              >
                 <h3>{product.product}</h3>
                 <label>Total Impressions:</label>
                 <h3

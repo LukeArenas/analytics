@@ -12,10 +12,11 @@ const nextChar = (letter) => {
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState([])
 
+  //function to get all ads from db
   const getAllAds = async () => {
     try {
-      //get all ads
       const response = await axios.get(`${BASE_URL}/`)
       //loop through and break the master array into an array of product arrays
       let productArray = []
@@ -46,7 +47,12 @@ const App = () => {
           <Route
             exact
             path="/"
-            component={() => <Overview products={products} />}
+            component={() => (
+              <Overview
+                products={products}
+                setSelectedProduct={setSelectedProduct}
+              />
+            )}
           />
           <Route path="/:product" component={() => <ProductDetail />} />
         </Switch>
