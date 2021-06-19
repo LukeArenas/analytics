@@ -1,0 +1,32 @@
+.green {
+  color: green;
+}
+
+.red {
+  color: orangered;
+}
+
+.ad-card {
+  width: 17vw;
+  box-shadow: 5px 5px 15px grey;
+  margin: 2rem 0;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.title {
+  width: 80vw;
+}
+
+.content {
+  width: 80vw;
+}
+
+.card-container {
+  width: 80vw;
+  justify-content: space-around;
+}

@@ -48,7 +48,7 @@ const App = () => {
             path="/"
             component={() => <Overview products={products} />}
           />
-          <Route path="/:product" component={ProductDetail} />
+          <Route path="/:product" component={() => <ProductDetail />} />
         </Switch>
       </main>
     </div>
