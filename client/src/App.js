@@ -54,7 +54,12 @@ const App = () => {
               />
             )}
           />
-          <Route path="/:product" component={() => <ProductDetail />} />
+          <Route
+            path="/:product"
+            component={() => (
+              <ProductDetail selectedProduct={selectedProduct} />
+            )}
+          />
         </Switch>
       </main>
     </div>

@@ -3,15 +3,19 @@ import React, { useState, useEffect } from 'react'
 const AtAGlance = (props) => {
   const [atAGlance, setAtAGlance] = useState({
     highImpressions: { highest: 0, product: '' },
-    lowImpressions: { lowest: 0, product: '' }
+    lowImpressions: { lowest: 0, product: '' },
+    highConversion: { highest: 0, product: '' },
+    lowConversion: { lowest: 0, product: '' },
+    highClicks: { highest: 0, product: '' },
+    lowClicks: { lowest: 0, product: '' }
   })
 
   const findAtAGlanceStats = () => {
-    let lowestImpressions = 5966
+    let lowestImpressions = props.productStats[0].totalImpressions
     let lowImpProduct = ''
     let highestImpressions = 0
     let highImpProduct = ''
-    let lowestClicks = 10000
+    let lowestClicks = props.productStats[0].totalClicks
     let lowClickProduct = ''
     let highestClicks = 0
     let highClickProduct = ''
