@@ -1,32 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 
-const LineGraph = (props) => {
-  const [dates, setDates] = useState([])
-  const [platforms, setPlatforms] = useState([])
+const Graphs = ({ platforms, dates, selectedProduct }) => {
   const [impressions, setImpressions] = useState([])
   const [clicks, setClicks] = useState([])
   const [conversions, setConversions] = useState([])
-
-  const createDateArray = () => {
-    let datesArray = []
-    props.selectedProduct.forEach((ad) => {
-      if (datesArray.indexOf(ad.date) < 0) {
-        datesArray.push(ad.date)
-      }
-    })
-    setDates(datesArray)
-  }
-
-  const fillPlatforms = () => {
-    let platformArray = []
-    props.selectedProduct.forEach((ad) => {
-      if (platformArray.indexOf(ad.platform) < 0) {
-        platformArray.push(ad.platform)
-      }
-    })
-    setPlatforms(platformArray)
-  }
 
   const fillDataSets = (input) => {
     const platformColors = {
@@ -39,7 +17,7 @@ const LineGraph = (props) => {
     let platformsDataArray = []
     platforms.forEach((platform) => {
       let platformData = []
-      props.selectedProduct.forEach((ad) => {
+      selectedProduct.forEach((ad) => {
         if (platform === ad.platform) {
           platformData.push(ad[input])
         }
@@ -86,11 +64,6 @@ const LineGraph = (props) => {
     })
     setConversions(conversionArray)
   }
-
-  useEffect(() => {
-    createDateArray()
-    fillPlatforms()
-  }, [])
 
   useEffect(() => {
     fillDataSets('impressions')
@@ -149,4 +122,4 @@ const LineGraph = (props) => {
   )
 }
 
-export default LineGraph
+export default Graphs
