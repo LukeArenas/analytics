@@ -50,6 +50,10 @@ const LineGraph = (props) => {
     fillImpressions()
   }, [])
 
+  useEffect(() => {
+    fillImpressions()
+  }, [platforms])
+
   return (
     <div>
       <Line
