@@ -6,6 +6,7 @@ const LineGraph = (props) => {
   const [platforms, setPlatforms] = useState([])
   const [impressions, setImpressions] = useState([])
   const [clicks, setClicks] = useState([])
+  const [conversions, setConversions] = useState([])
 
   const createDateArray = () => {
     let datesArray = []
@@ -56,6 +57,36 @@ const LineGraph = (props) => {
     }
   }
 
+  const createConversionData = () => {
+    const platformColors = {
+      Amazon: '#FF9900',
+      Facebook: '#4267B2',
+      Google: '#3cba54',
+      LinkedIn: 'rgb(201, 152, 29)',
+      Twitter: '#00acee'
+    }
+    let conversionArray = []
+    impressions.forEach((impressionArray, index) => {
+      let platformConversion = []
+      impressionArray.data.forEach((impression, subIdx) => {
+        let conversion =
+          Math.round((clicks[index].data[subIdx] / impression) * 100 * 100) /
+          100
+        if (conversion) {
+          platformConversion.push(conversion)
+        } else {
+          platformConversion.push(0)
+        }
+      })
+      conversionArray.push({
+        label: impressionArray.label,
+        data: platformConversion,
+        borderColor: platformColors[impressionArray.label]
+      })
+    })
+    setConversions(conversionArray)
+  }
+
   useEffect(() => {
     createDateArray()
     fillPlatforms()
@@ -66,30 +97,53 @@ const LineGraph = (props) => {
     fillDataSets('clicks')
   }, [platforms])
 
+  useEffect(() => {
+    createConversionData()
+  }, [clicks])
+
   return (
     <div>
       <div>
-        <Line
-          data={{
-            labels: dates,
-            datasets: impressions
-          }}
-          height={400}
-          width={600}
-          options={{ maintainAspectRatio: false }}
-        />
+        <h2>Impressions</h2>
+        <div>
+          <Line
+            data={{
+              labels: dates,
+              datasets: impressions
+            }}
+            height={400}
+            width={600}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
       </div>
-      <div>hello</div>
       <div>
-        <Line
-          data={{
-            labels: dates,
-            datasets: clicks
-          }}
-          height={400}
-          width={600}
-          options={{ maintainAspectRatio: false }}
-        />
+        <h2>Clicks</h2>
+        <div>
+          <Line
+            data={{
+              labels: dates,
+              datasets: clicks
+            }}
+            height={400}
+            width={600}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
+      </div>
+      <div>
+        <h2>Conversions</h2>
+        <div>
+          <Line
+            data={{
+              labels: dates,
+              datasets: conversions
+            }}
+            height={400}
+            width={600}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
       </div>
     </div>
   )
