@@ -5,6 +5,7 @@ const LineGraph = (props) => {
   const [dates, setDates] = useState([])
   const [platforms, setPlatforms] = useState([])
   const [impressions, setImpressions] = useState([])
+  const [clicks, setClicks] = useState([])
 
   const createDateArray = () => {
     let datesArray = []
@@ -26,54 +27,70 @@ const LineGraph = (props) => {
     setPlatforms(platformArray)
   }
 
-  const fillImpressions = () => {
-    let platformsImpressionsArray = []
+  const fillDataSets = (input) => {
+    const platformColors = {
+      Amazon: '#FF9900',
+      Facebook: '#4267B2',
+      Google: '#3cba54',
+      LinkedIn: 'rgb(201, 152, 29)',
+      Twitter: '#00acee'
+    }
+    let platformsDataArray = []
     platforms.forEach((platform) => {
-      let platformImpressions = []
+      let platformData = []
       props.selectedProduct.forEach((ad) => {
         if (platform === ad.platform) {
-          platformImpressions.push(ad.impressions)
+          platformData.push(ad[input])
         }
       })
-      console.log(platform, platformImpressions)
-      platformsImpressionsArray.push({
-        platform: platform,
-        impressions: platformImpressions
+      platformsDataArray.push({
+        label: platform,
+        data: platformData,
+        borderColor: platformColors[platform]
       })
     })
-    setImpressions(platformsImpressionsArray)
+    if (input === 'impressions') {
+      setImpressions(platformsDataArray)
+    } else if (input === 'clicks') {
+      setClicks(platformsDataArray)
+    }
   }
 
   useEffect(() => {
     createDateArray()
     fillPlatforms()
-    fillImpressions()
   }, [])
 
   useEffect(() => {
-    fillImpressions()
+    fillDataSets('impressions')
+    fillDataSets('clicks')
   }, [platforms])
 
   return (
     <div>
-      <Line
-        data={{
-          labels: dates,
-          datasets: [
-            {
-              label: 'Google',
-              data: [12, 19, 3, 5, 2, 3]
-            },
-            {
-              label: 'Amazon',
-              data: [8, 10, 3, 6, 1, 0]
-            }
-          ]
-        }}
-        height={400}
-        width={600}
-        options={{ maintainAspectRatio: false }}
-      />
+      <div>
+        <Line
+          data={{
+            labels: dates,
+            datasets: impressions
+          }}
+          height={400}
+          width={600}
+          options={{ maintainAspectRatio: false }}
+        />
+      </div>
+      <div>hello</div>
+      <div>
+        <Line
+          data={{
+            labels: dates,
+            datasets: clicks
+          }}
+          height={400}
+          width={600}
+          options={{ maintainAspectRatio: false }}
+        />
+      </div>
     </div>
   )
 }
