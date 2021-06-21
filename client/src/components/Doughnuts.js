@@ -67,20 +67,10 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
 
   return (
     <div>
-      <div>
-        <h2>Impressions</h2>
+      {selectedPlatform < 0 ? (
         <div>
-          {impressions.length && selectedPlatform >= 0 ? (
-            <Doughnut
-              data={{
-                labels: platforms,
-                datasets: [{}]
-              }}
-              height={400}
-              width={600}
-              options={{ maintainAspectRatio: false }}
-            />
-          ) : (
+          <h2>Impressions</h2>
+          <div>
             <Doughnut
               data={{
                 labels: platforms,
@@ -90,23 +80,14 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
               width={600}
               options={{ maintainAspectRatio: false }}
             />
-          )}
+          </div>
         </div>
-      </div>
-      <div>
-        <h2>Clicks</h2>
+      ) : null}
+
+      {selectedPlatform < 0 ? (
         <div>
-          {clicks.length && selectedPlatform >= 0 ? (
-            <Doughnut
-              data={{
-                labels: platforms,
-                datasets: [{}]
-              }}
-              height={400}
-              width={600}
-              options={{ maintainAspectRatio: false }}
-            />
-          ) : (
+          <h2>Clicks</h2>
+          <div>
             <Doughnut
               data={{
                 labels: platforms,
@@ -116,23 +97,13 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
               width={600}
               options={{ maintainAspectRatio: false }}
             />
-          )}
+          </div>
         </div>
-      </div>
-      <div>
-        <h2>Conversions</h2>
+      ) : null}
+      {selectedPlatform < 0 ? (
         <div>
-          {conversions.length && selectedPlatform >= 0 ? (
-            <Doughnut
-              data={{
-                labels: platforms,
-                datasets: [{}]
-              }}
-              height={400}
-              width={600}
-              options={{ maintainAspectRatio: false }}
-            />
-          ) : (
+          <h2>Conversions</h2>
+          <div>
             <Doughnut
               data={{
                 labels: platforms,
@@ -142,9 +113,9 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
               width={600}
               options={{ maintainAspectRatio: false }}
             />
-          )}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   )
 }
