@@ -69,7 +69,7 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
     <div>
       {selectedPlatform < 0 ? (
         <div>
-          <h2>Impressions</h2>
+          <h2 className="chart-label">Impressions</h2>
           <div>
             <Doughnut
               data={{
@@ -86,7 +86,7 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
 
       {selectedPlatform < 0 ? (
         <div>
-          <h2>Clicks</h2>
+          <h2 className="chart-label">Clicks</h2>
           <div>
             <Doughnut
               data={{
@@ -102,7 +102,7 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
       ) : null}
       {selectedPlatform < 0 ? (
         <div>
-          <h2>Conversions</h2>
+          <h2 className="chart-label">Conversions</h2>
           <div>
             <Doughnut
               data={{

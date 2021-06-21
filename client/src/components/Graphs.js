@@ -77,7 +77,7 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
   return (
     <div>
       <div>
-        <h2>Impressions</h2>
+        <h2 className="chart-label">Impressions</h2>
         <div>
           {impressions.length && selectedPlatform >= 0 ? (
             <Line
@@ -103,7 +103,7 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
         </div>
       </div>
       <div>
-        <h2>Clicks</h2>
+        <h2 className="chart-label">Clicks</h2>
         <div>
           {clicks.length && selectedPlatform >= 0 ? (
             <Line
@@ -129,7 +129,7 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
         </div>
       </div>
       <div>
-        <h2>Conversions</h2>
+        <h2 className="chart-label">Conversions</h2>
         <div>
           {conversions.length && selectedPlatform >= 0 ? (
             <Line

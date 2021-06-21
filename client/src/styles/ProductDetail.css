@@ -9,3 +9,7 @@ canvas {
 label {
   margin: 0 1rem;
 }
+
+.chart-label {
+  color: rgb(131, 131, 131);
+}
