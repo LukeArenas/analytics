@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Graphs from '../components/Graphs'
+import Doughnuts from '../components/Doughnuts'
 
 const ProductDetail = (props) => {
   const [dates, setDates] = useState([])
@@ -51,6 +52,12 @@ const ProductDetail = (props) => {
         </select>
       </form>
       <Graphs
+        {...props}
+        platforms={platforms}
+        dates={dates}
+        selectedPlatform={selectedPlatform}
+      />
+      <Doughnuts
         {...props}
         platforms={platforms}
         dates={dates}
