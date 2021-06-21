@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 
 const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
-  const [impressions, setImpressions] = useState({})
+  const [impressions, setImpressions] = useState({ data: [] })
   const [clicks, setClicks] = useState({})
-  const [conversions, setConversions] = useState([])
+  const [conversions, setConversions] = useState({})
 
   const fillDataSets = (input) => {
     const platformColors = {
@@ -39,44 +39,31 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
     }
   }
 
-  // const createConversionData = () => {
-  //   const platformColors = {
-  //     Amazon: '#FF9900',
-  //     Facebook: '#4267B2',
-  //     Google: '#3cba54',
-  //     LinkedIn: 'rgb(201, 152, 29)',
-  //     Twitter: '#00acee'
-  //   }
-  //   let conversionArray = []
-  //   impressions.forEach((impressionArray, index) => {
-  //     let platformConversion = []
-  //     impressionArray.data.forEach((impression, subIdx) => {
-  //       let conversion =
-  //         Math.round((clicks[index].data[subIdx] / impression) * 100 * 100) /
-  //         100
-  //       if (conversion) {
-  //         platformConversion.push(conversion)
-  //       } else {
-  //         platformConversion.push(0)
-  //       }
-  //     })
-  //     conversionArray.push({
-  //       label: impressionArray.label,
-  //       data: platformConversion,
-  //       borderColor: platformColors[impressionArray.label]
-  //     })
-  //   })
-  //   setConversions(conversionArray)
-  // }
+  const createConversionData = () => {
+    let platformConversion = []
+    impressions.data.forEach((impression, index) => {
+      let conversion =
+        Math.round((clicks.data[index] / impression) * 100 * 100) / 100
+      if (conversion) {
+        platformConversion.push(conversion)
+      } else {
+        platformConversion.push(0)
+      }
+    })
+    setConversions({
+      data: platformConversion,
+      backgroundColor: impressions.backgroundColor
+    })
+  }
 
   useEffect(() => {
     fillDataSets('impressions')
     fillDataSets('clicks')
   }, [platforms])
 
-  // useEffect(() => {
-  //   createConversionData()
-  // }, [clicks])
+  useEffect(() => {
+    createConversionData()
+  }, [clicks])
 
   return (
     <div>
@@ -132,14 +119,14 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
           )}
         </div>
       </div>
-      {/* <div>
+      <div>
         <h2>Conversions</h2>
         <div>
           {conversions.length && selectedPlatform >= 0 ? (
             <Doughnut
               data={{
                 labels: platforms,
-                datasets: [conversions[selectedPlatform]]
+                datasets: [{}]
               }}
               height={400}
               width={600}
@@ -149,7 +136,7 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
             <Doughnut
               data={{
                 labels: platforms,
-                datasets: conversions
+                datasets: [conversions]
               }}
               height={400}
               width={600}
@@ -157,7 +144,7 @@ const Doughnuts = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
             />
           )}
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
