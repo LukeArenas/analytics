@@ -9,6 +9,7 @@
   padding-left: 2rem;
   margin: 0 0 2rem 0;
   color: rgb(131, 131, 131);
+  text-decoration: underline solid rgb(51, 203, 223) 5px;
 }
 
 .at-a-glance-page h4 {

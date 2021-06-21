@@ -1,15 +1,16 @@
-.green {
-  color: green;
-}
-
-.red {
-  color: orangered;
-}
-
 .ad-card {
   width: 17vw;
-  box-shadow: 5px 5px 15px grey;
+  box-shadow: 5px 5px 15px rgb(189, 189, 189);
   margin: 2rem 0;
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ad-card:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 15px grey;
 }
 
 .flex {
@@ -32,10 +33,33 @@
   margin: 0;
   padding: 0 0 0 2rem;
   color: rgb(131, 131, 131);
+  text-decoration: underline solid rgb(51, 203, 223) 5px;
 }
 
 .card-container {
   width: 80vw;
   justify-content: space-around;
   background-color: white;
+}
+
+.label {
+  display: inline;
+  margin: 0.3rem 0.5rem;
+}
+
+.stats {
+  width: 80%;
+  text-align: left;
+}
+
+.product-name {
+  width: 100%;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: orangered;
 }

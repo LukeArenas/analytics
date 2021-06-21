@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Graphs from '../components/Graphs'
 import Doughnuts from '../components/Doughnuts'
+import '../styles/ProductDetail.css'
 
 const ProductDetail = (props) => {
   const [dates, setDates] = useState([])
@@ -40,9 +41,12 @@ const ProductDetail = (props) => {
   return (
     <div>
       {props.selectedProduct[0] ? (
-        <div>
-          <h1>Product {props.selectedProduct[0].product}</h1>
+        <div className="flex">
+          <h2 className="page-title">
+            Product {props.selectedProduct[0].product}
+          </h2>
           <form className="filter">
+            <label>Filter By Platform:</label>
             <select onChange={(e) => changePlatformFilter(e)}>
               <option value="-1">All</option>
               {platforms.length

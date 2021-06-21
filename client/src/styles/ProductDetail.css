@@ -1,0 +1,11 @@
+.filter {
+  width: 80vw;
+}
+
+canvas {
+  width: 40vw;
+}
+
+label {
+  margin: 0 1rem;
+}

@@ -39,7 +39,7 @@ const Overview = (props) => {
 
   return (
     <div className="overview-page flex">
-      <h2 className="title">Campaign Overview</h2>
+      <h2 className="page-title">Campaign Overview</h2>
       {productStats.length ? <AtAGlance productStats={productStats} /> : null}
 
       <div className="content">
@@ -52,32 +52,54 @@ const Overview = (props) => {
                 className="ad-card"
                 onClick={() => handleClick(index, product.product)}
               >
-                <h4>Product {product.product}</h4>
-                <label>Total Impressions:</label>
-                <p
-                  className={
-                    product.totalImpressions > 6000
-                      ? 'label green'
-                      : 'label red'
-                  }
-                >
-                  {product.totalImpressions}
-                </p>
-                <label>Total Clicks:</label>
-                <p
-                  className={
-                    product.totalClicks > 700 ? 'label green' : 'label red'
-                  }
-                >
-                  {product.totalClicks}
-                </p>
-                <label>Conversion:</label>
-                <p>
-                  {Math.round(
-                    (product.totalClicks / product.totalImpressions) * 100 * 100
-                  ) / 100}
-                  %
-                </p>
+                <h4 className="product-name">Product {product.product}</h4>
+                <div className="stats">
+                  <div>
+                    <p className="label">Total Impressions:</p>
+                    <p
+                      className={
+                        product.totalImpressions > 6000
+                          ? 'label green'
+                          : 'label red'
+                      }
+                    >
+                      {product.totalImpressions}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="label">Total Clicks:</p>
+                    <p
+                      className={
+                        product.totalClicks > 700 ? 'label green' : 'label red'
+                      }
+                    >
+                      {product.totalClicks}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="label">Conversion:</p>
+                    <p
+                      className={
+                        Math.round(
+                          (product.totalClicks / product.totalImpressions) *
+                            100 *
+                            100
+                        ) /
+                          100 >
+                        10.5
+                          ? 'label green'
+                          : 'label red'
+                      }
+                    >
+                      {Math.round(
+                        (product.totalClicks / product.totalImpressions) *
+                          100 *
+                          100
+                      ) / 100}
+                      %
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
