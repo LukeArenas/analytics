@@ -1,9 +1,10 @@
-import { Route, useHistory, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from './globals'
 import axios from 'axios'
 import Overview from './pages/Overview'
 import ProductDetail from './pages/ProductDetail'
+import NavBar from './components/NavBar'
 import './App.css'
 
 const nextChar = (letter) => {
@@ -41,7 +42,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>Header</header>
+      <header>
+        <NavBar />
+      </header>
       <main>
         <Switch>
           <Route

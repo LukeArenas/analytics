@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import Graphs from '../components/Graphs'
 import Doughnuts from '../components/Doughnuts'
 
 const ProductDetail = (props) => {
   const [dates, setDates] = useState([])
   const [platforms, setPlatforms] = useState([])
-  const [selectedPlatform, setSelectedPlatform] = useState('All')
+  const [selectedPlatform, setSelectedPlatform] = useState(-1)
 
   const createDateArray = () => {
     let datesArray = []
@@ -38,31 +39,37 @@ const ProductDetail = (props) => {
 
   return (
     <div>
-      <h1>Product {props.selectedProduct[0].product}</h1>
-      <form className="filter">
-        <select onChange={(e) => changePlatformFilter(e)}>
-          <option value="-1">All</option>
-          {platforms.length
-            ? platforms.map((platform, idx) => (
-                <option value={idx} key={idx}>
-                  {platform}
-                </option>
-              ))
-            : null}
-        </select>
-      </form>
-      <Graphs
-        {...props}
-        platforms={platforms}
-        dates={dates}
-        selectedPlatform={selectedPlatform}
-      />
-      <Doughnuts
-        {...props}
-        platforms={platforms}
-        dates={dates}
-        selectedPlatform={selectedPlatform}
-      />
+      {props.selectedProduct[0] ? (
+        <div>
+          <h1>Product {props.selectedProduct[0].product}</h1>
+          <form className="filter">
+            <select onChange={(e) => changePlatformFilter(e)}>
+              <option value="-1">All</option>
+              {platforms.length
+                ? platforms.map((platform, idx) => (
+                    <option value={idx} key={idx}>
+                      {platform}
+                    </option>
+                  ))
+                : null}
+            </select>
+          </form>
+          <Graphs
+            {...props}
+            platforms={platforms}
+            dates={dates}
+            selectedPlatform={selectedPlatform}
+          />
+          <Doughnuts
+            {...props}
+            platforms={platforms}
+            dates={dates}
+            selectedPlatform={selectedPlatform}
+          />
+        </div>
+      ) : (
+        <Redirect to="/" />
+      )}
     </div>
   )
 }
