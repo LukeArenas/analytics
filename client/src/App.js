@@ -42,10 +42,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>
-        <NavBar />
-      </header>
-      <main>
+      <NavBar />
+      <main className="main-content">
         <Switch>
           <Route
             exact

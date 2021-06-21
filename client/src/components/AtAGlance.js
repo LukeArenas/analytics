@@ -90,7 +90,7 @@ const AtAGlance = (props) => {
         <h4>Most Clicks:</h4>
         <div>{atAGlance.highClicks.highest}</div>
         <div>{atAGlance.highClicks.product}</div>
-        <h4>least Clicks:</h4>
+        <h4>Least Clicks:</h4>
         <div>{atAGlance.lowClicks.lowest}</div>
         <div>{atAGlance.lowClicks.product}</div>
       </section>

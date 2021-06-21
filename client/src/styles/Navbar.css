@@ -1,0 +1,34 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3.5rem;
+  background-color: rgb(51, 203, 223);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  margin: 0 0 0 3rem;
+  font-size: 1.5rem;
+  color: rgb(131, 131, 131);
+}
+
+.navbar button {
+  text-decoration: none;
+  color: rgb(235, 235, 235);
+  border: none;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  position: fixed;
+  right: 4rem;
+}
+
+.navbar button:hover,
+.navbar button:active {
+  color: rgb(131, 131, 131);
+}
