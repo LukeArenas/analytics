@@ -43,6 +43,7 @@ const Overview = (props) => {
       {productStats.length ? <AtAGlance productStats={productStats} /> : null}
 
       <div className="content">
+        <h3>Product List:</h3>
         {productStats.length ? (
           <div className="flex card-container">
             {productStats.map((product, index) => (
@@ -51,9 +52,9 @@ const Overview = (props) => {
                 className="ad-card"
                 onClick={() => handleClick(index, product.product)}
               >
-                <h3>{product.product}</h3>
+                <h4>Product {product.product}</h4>
                 <label>Total Impressions:</label>
-                <h3
+                <p
                   className={
                     product.totalImpressions > 6000
                       ? 'label green'
@@ -61,15 +62,15 @@ const Overview = (props) => {
                   }
                 >
                   {product.totalImpressions}
-                </h3>
+                </p>
                 <label>Total Clicks:</label>
-                <h3
+                <p
                   className={
                     product.totalClicks > 700 ? 'label green' : 'label red'
                   }
                 >
                   {product.totalClicks}
-                </h3>
+                </p>
                 <label>Conversion:</label>
                 <p>
                   {Math.round(

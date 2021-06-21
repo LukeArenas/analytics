@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../styles/AtAGlance.css'
 
 const AtAGlance = (props) => {
   const [atAGlance, setAtAGlance] = useState({
@@ -72,27 +73,45 @@ const AtAGlance = (props) => {
   }, [])
 
   return (
-    <div>
+    <div className="at-a-glance-page">
       <h3 className="title">At A Glance:</h3>
       <section>
-        <h4>Highest Conversion:</h4>
-        <div>{atAGlance.highConversion.highest}</div>
-        <div>{atAGlance.highConversion.product}</div>
-        <h4>Lowest Conversion:</h4>
-        <div>{atAGlance.lowConversion.lowest}</div>
-        <div>{atAGlance.lowConversion.product}</div>
-        <h4>Most Impressions:</h4>
-        <div>{atAGlance.highImpressions.highest}</div>
-        <div>{atAGlance.highImpressions.product}</div>
-        <h4>Least Impressions:</h4>
-        <div>{atAGlance.lowImpressions.lowest}</div>
-        <div>{atAGlance.lowImpressions.product}</div>
-        <h4>Most Clicks:</h4>
-        <div>{atAGlance.highClicks.highest}</div>
-        <div>{atAGlance.highClicks.product}</div>
-        <h4>Least Clicks:</h4>
-        <div>{atAGlance.lowClicks.lowest}</div>
-        <div>{atAGlance.lowClicks.product}</div>
+        <div className="at-a-glance-card">
+          <h4>Highest Conversion:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.highConversion.product}</p>
+            <p>Conversion: {atAGlance.highConversion.highest}%</p>
+          </div>
+          <h4>Lowest Conversion:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.lowConversion.product}</p>
+            <p>Conversion: {atAGlance.lowConversion.lowest}%</p>
+          </div>
+        </div>
+        <div className="at-a-glance-card">
+          <h4>Most Impressions:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.highImpressions.product}</p>
+            <p>Impressions: {atAGlance.highImpressions.highest}</p>
+          </div>
+          <h4>Least Impressions:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.lowImpressions.product}</p>
+            <p>Impressions: {atAGlance.lowImpressions.lowest}</p>
+          </div>
+        </div>
+        <div className="at-a-glance-card">
+          <h4>Most Clicks:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.highClicks.product}</p>
+            <p>Clicks: {atAGlance.highClicks.highest}</p>
+          </div>
+          <h4>Least Clicks:</h4>
+          <div className="flex">
+            <p>Product: {atAGlance.lowClicks.product}</p>
+            <p>Clicks: {atAGlance.lowClicks.lowest}</p>
+          </div>
+        </div>
       </section>
     </div>
   )
