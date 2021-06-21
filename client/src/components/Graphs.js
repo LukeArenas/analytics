@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 
-const Graphs = ({ platforms, dates, selectedProduct }) => {
+const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
   const [impressions, setImpressions] = useState([])
   const [clicks, setClicks] = useState([])
   const [conversions, setConversions] = useState([])
@@ -79,43 +79,79 @@ const Graphs = ({ platforms, dates, selectedProduct }) => {
       <div>
         <h2>Impressions</h2>
         <div>
-          <Line
-            data={{
-              labels: dates,
-              datasets: impressions
-            }}
-            height={400}
-            width={600}
-            options={{ maintainAspectRatio: false }}
-          />
+          {impressions.length && selectedPlatform >= 0 ? (
+            <Line
+              data={{
+                labels: dates,
+                datasets: [impressions[selectedPlatform]]
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          ) : (
+            <Line
+              data={{
+                labels: dates,
+                datasets: impressions
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          )}
         </div>
       </div>
       <div>
         <h2>Clicks</h2>
         <div>
-          <Line
-            data={{
-              labels: dates,
-              datasets: clicks
-            }}
-            height={400}
-            width={600}
-            options={{ maintainAspectRatio: false }}
-          />
+          {clicks.length && selectedPlatform >= 0 ? (
+            <Line
+              data={{
+                labels: dates,
+                datasets: [clicks[selectedPlatform]]
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          ) : (
+            <Line
+              data={{
+                labels: dates,
+                datasets: clicks
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          )}
         </div>
       </div>
       <div>
         <h2>Conversions</h2>
         <div>
-          <Line
-            data={{
-              labels: dates,
-              datasets: conversions
-            }}
-            height={400}
-            width={600}
-            options={{ maintainAspectRatio: false }}
-          />
+          {conversions.length && selectedPlatform >= 0 ? (
+            <Line
+              data={{
+                labels: dates,
+                datasets: [conversions[selectedPlatform]]
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          ) : (
+            <Line
+              data={{
+                labels: dates,
+                datasets: conversions
+              }}
+              height={400}
+              width={600}
+              options={{ maintainAspectRatio: false }}
+            />
+          )}
         </div>
       </div>
     </div>

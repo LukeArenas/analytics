@@ -27,7 +27,7 @@ const ProductDetail = (props) => {
   }
 
   const changePlatformFilter = (e) => {
-    setSelectedPlatform(e.target.value)
+    setSelectedPlatform(parseInt(e.target.value))
   }
 
   useEffect(() => {
@@ -40,10 +40,10 @@ const ProductDetail = (props) => {
       <h1>Product {props.selectedProduct[0].product}</h1>
       <form className="filter">
         <select onChange={(e) => changePlatformFilter(e)}>
-          <option value="All">All</option>
+          <option value="-1">All</option>
           {platforms.length
             ? platforms.map((platform, idx) => (
-                <option value={platform} key={idx}>
+                <option value={idx} key={idx}>
                   {platform}
                 </option>
               ))
