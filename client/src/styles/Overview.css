@@ -6,6 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border-radius: 10px;
 }
 
 .ad-card:hover {
@@ -27,13 +28,20 @@
   width: 80vw;
 }
 
-.content h3 {
+.section-title {
   text-align: left;
   background-color: white;
   margin: 0;
   padding: 0 0 0 2rem;
   color: rgb(131, 131, 131);
   text-decoration: underline solid rgb(51, 203, 223) 5px;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: rgb(184, 184, 184);
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .card-container {
@@ -54,12 +62,13 @@
 
 .product-name {
   width: 100%;
+  margin-top: 0;
 }
 
 .green {
-  color: green;
+  color: rgb(49, 202, 49);
 }
 
 .red {
-  color: orangered;
+  color: rgb(255, 93, 34);
 }

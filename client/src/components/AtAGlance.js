@@ -74,42 +74,59 @@ const AtAGlance = (props) => {
 
   return (
     <div className="at-a-glance-page">
-      <h3 className="title">At A Glance:</h3>
+      <h3 className="section-title">At A Glance:</h3>
       <section>
         <div className="at-a-glance-card">
           <h4>Highest Conversion:</h4>
           <div className="flex">
             <p>Product: {atAGlance.highConversion.product}</p>
-            <p>Conversion: {atAGlance.highConversion.highest}%</p>
+            <p className="label">
+              Conversion:{' '}
+              <span className="green">{atAGlance.highConversion.highest}%</span>
+            </p>
           </div>
           <h4>Lowest Conversion:</h4>
           <div className="flex">
             <p>Product: {atAGlance.lowConversion.product}</p>
-            <p>Conversion: {atAGlance.lowConversion.lowest}%</p>
+            <p>
+              Conversion:{' '}
+              <span className="red">{atAGlance.lowConversion.lowest}%</span>
+            </p>
           </div>
         </div>
         <div className="at-a-glance-card">
           <h4>Most Impressions:</h4>
           <div className="flex">
             <p>Product: {atAGlance.highImpressions.product}</p>
-            <p>Impressions: {atAGlance.highImpressions.highest}</p>
+            <p>
+              Impressions:{' '}
+              <span className="green">{atAGlance.highImpressions.highest}</span>
+            </p>
           </div>
           <h4>Least Impressions:</h4>
           <div className="flex">
             <p>Product: {atAGlance.lowImpressions.product}</p>
-            <p>Impressions: {atAGlance.lowImpressions.lowest}</p>
+            <p>
+              Impressions:{' '}
+              <span className="red">{atAGlance.lowImpressions.lowest}</span>
+            </p>
           </div>
         </div>
         <div className="at-a-glance-card">
           <h4>Most Clicks:</h4>
           <div className="flex">
             <p>Product: {atAGlance.highClicks.product}</p>
-            <p>Clicks: {atAGlance.highClicks.highest}</p>
+            <p>
+              Clicks:{' '}
+              <span className="green">{atAGlance.highClicks.highest}</span>
+            </p>
           </div>
           <h4>Least Clicks:</h4>
           <div className="flex">
             <p>Product: {atAGlance.lowClicks.product}</p>
-            <p>Clicks: {atAGlance.lowClicks.lowest}</p>
+            <p>
+              Clicks: <span className="red">{atAGlance.lowClicks.lowest}</span>
+            </p>
           </div>
         </div>
       </section>

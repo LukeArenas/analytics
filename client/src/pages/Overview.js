@@ -43,7 +43,8 @@ const Overview = (props) => {
       {productStats.length ? <AtAGlance productStats={productStats} /> : null}
 
       <div className="content">
-        <h3>Product List:</h3>
+        <h3 className="section-title">Product List:</h3>
+        <h4 className="subtitle">Click on card for details</h4>
         {productStats.length ? (
           <div className="flex card-container">
             {productStats.map((product, index) => (
