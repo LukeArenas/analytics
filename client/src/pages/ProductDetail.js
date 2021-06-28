@@ -9,6 +9,7 @@ const ProductDetail = (props) => {
   const [platforms, setPlatforms] = useState([])
   const [selectedPlatform, setSelectedPlatform] = useState(-1)
 
+  //creates array of dates without duplicates
   const createDateArray = () => {
     let datesArray = []
     props.selectedProduct.forEach((ad) => {
@@ -19,6 +20,7 @@ const ProductDetail = (props) => {
     setDates(datesArray)
   }
 
+  //creates array of platforms without duplicates
   const fillPlatforms = () => {
     let platformArray = []
     props.selectedProduct.forEach((ad) => {
@@ -29,6 +31,7 @@ const ProductDetail = (props) => {
     setPlatforms(platformArray)
   }
 
+  //changes platform to filter by based on user input
   const changePlatformFilter = (e) => {
     setSelectedPlatform(parseInt(e.target.value))
   }

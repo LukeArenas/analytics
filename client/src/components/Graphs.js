@@ -14,7 +14,9 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
       LinkedIn: 'rgb(201, 152, 29)',
       Twitter: '#00acee'
     }
+    //create an array that will be passed in as the data in the dataset object
     let platformsDataArray = []
+    //access the value of the input for each object, push it into the array
     platforms.forEach((platform) => {
       let platformData = []
       selectedProduct.forEach((ad) => {
@@ -22,12 +24,14 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
           platformData.push(ad[input])
         }
       })
+      //create and push object into array
       platformsDataArray.push({
         label: platform,
         data: platformData,
         borderColor: platformColors[platform]
       })
     })
+    //set array to state
     if (input === 'impressions') {
       setImpressions(platformsDataArray)
     } else if (input === 'clicks') {
@@ -44,24 +48,28 @@ const Graphs = ({ platforms, dates, selectedProduct, selectedPlatform }) => {
       Twitter: '#00acee'
     }
     let conversionArray = []
+    //loop through impressions and access the clicks, then calcluate the conversion based on those two values
     impressions.forEach((impressionArray, index) => {
       let platformConversion = []
       impressionArray.data.forEach((impression, subIdx) => {
         let conversion =
           Math.round((clicks[index].data[subIdx] / impression) * 100 * 100) /
           100
+        //if value exists push to array, else if NaN, push 0 to array
         if (conversion) {
           platformConversion.push(conversion)
         } else {
           platformConversion.push(0)
         }
       })
+      //create an object and push to array
       conversionArray.push({
         label: impressionArray.label,
         data: platformConversion,
         borderColor: platformColors[impressionArray.label]
       })
     })
+    //set this array to state
     setConversions(conversionArray)
   }
 
